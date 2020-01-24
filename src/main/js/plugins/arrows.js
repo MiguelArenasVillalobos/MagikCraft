@@ -26,8 +26,7 @@ as a parameter. For example: `/js arrows.explosive('player23')` makes
 player23's arrows explosive.
  
 ***/
-var Drone = require('drone'),
-  teleport = require('teleport'),
+var teleport = require('teleport'),
   signs = require('signs'),
   fireworks = require('fireworks'),
   utils = require('utils'),
@@ -114,7 +113,7 @@ function onBukkitArrowHit(event) {
         break;
       case 3:
         projectile.remove();
-        new Drone(projectile.location).oak();
+        // new Drone(projectile.location).oak();
         break;
       case 4:
         projectile.remove();
@@ -158,7 +157,7 @@ function onCanaryArrowHit(event) {
         break;
       case 3:
         projectile.destroy();
-        new Drone(loc).oak();
+        // new Drone(loc).oak();
         break;
       case 4:
         projectile.destroy();
