@@ -12,12 +12,12 @@ COPY magikcraft/magik-scriptcraft.jar plugins/magik-scriptcraft.jar
 COPY magikcraft/scriptcraft-plugins scriptcraft-plugins
 COPY SMA/scriptcraft-tests scriptcraft-plugins/
 
+# Accept Minecraft EULA
+RUN echo "eula=true" >> eula.txt
+
 # From here: https://vsupalov.com/docker-build-time-env-values/
 ARG TEST_MODE_SETTING=true
-ARG EULA_SETTING=true
 ENV TEST_MODE=$TEST_MODE_SETTING
-ENV MINECRAFT_EULA_ACCEPTED=$EULA_SETTING
 
 # Run the tests
-CMD ["java", "-jar", "minecraft.jar"]
-
+CMD /_server_/start.sh
