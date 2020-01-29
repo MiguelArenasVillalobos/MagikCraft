@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -39,13 +40,13 @@ var TestLoader_1 = require("./TestLoader");
 var File = java.io.File;
 var log = function (msg) { return console.log("[SMA] " + msg); };
 var loader = require("../lib/loader");
-var canonize = function (file) { return '' + file.getCanonicalPath().replaceAll('\\\\', '/'); };
+var canonize = function (file) { return "" + file.getCanonicalPath().replaceAll("\\\\", "/"); };
 var SMAPluginLoader = /** @class */ (function () {
     function SMAPluginLoader(smaPath) {
         var _this = this;
         this.testMode = false;
         this.testLoaders = [];
-        this.filterHiddenFiles = function (file) { return file.getName().indexOf('.') != 0; };
+        this.filterHiddenFiles = function (file) { return file.getName().indexOf(".") != 0; };
         this.absolutePluginPath = function (p) { return _this.smaPluginsRootDirName + "/" + p; };
         this.smaPluginsRootDir = new File(smaPath);
         this.smaPluginsRootDirName = canonize(this.smaPluginsRootDir);
@@ -57,14 +58,14 @@ var SMAPluginLoader = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         if (__disableSMAPluginLoading) {
-                            log('SMA Plugin loading disabled');
+                            log("SMA Plugin loading disabled");
                             return [2 /*return*/];
                         }
                         this.testMode = testMode;
                         log("Searching for SMA plugins in " + this.smaPluginsRootDir);
                         smaPlugins = this.smaPluginsRootDir.list(this.filterHiddenFiles);
                         if (!smaPlugins) {
-                            log('No SMA plugins found.');
+                            log("No SMA plugins found.");
                             return [2 /*return*/];
                         }
                         packages = this.getPackages(smaPlugins);
@@ -74,7 +75,7 @@ var SMAPluginLoader = /** @class */ (function () {
                         _a.sent();
                         _a.label = 2;
                     case 2:
-                        log('SMA plugin loading complete.');
+                        log("SMA plugin loading complete.");
                         return [2 /*return*/, this.testLoaders];
                 }
             });
@@ -123,7 +124,7 @@ var SMAPluginLoader = /** @class */ (function () {
                         path = this.absolutePluginPath("" + name);
                         packages.push({
                             name: name,
-                            path: path,
+                            path: path
                         });
                         if (this.testMode) {
                             testLoader = new TestLoader_1.TestLoader(path);
@@ -136,11 +137,10 @@ var SMAPluginLoader = /** @class */ (function () {
                 len = smaPlugins.length;
                 for (i = 0; i < len; i++) {
                     name = void 0;
-                    if (smaPlugins[i] === '__jasmine' ||
-                        smaPlugins[i] === 'node_modules') {
+                    if (smaPlugins[i] === "__jasmine" || smaPlugins[i] === "node_modules") {
                         continue;
                     }
-                    isNamespacedPackageDir = smaPlugins[i].indexOf('@') === 0;
+                    isNamespacedPackageDir = smaPlugins[i].indexOf("@") === 0;
                     if (isNamespacedPackageDir) {
                         namespace = smaPlugins[i];
                         namespacedDir = new File(this.absolutePluginPath("" + namespace));
@@ -174,7 +174,7 @@ var SMAPluginLoader = /** @class */ (function () {
                 var file = new File(path + "/" + loadDir);
                 if (file.isDirectory()) {
                     log("Found autoload directory " + name + "/" + loadDir);
-                    return ('' + file.canonicalPath).replace(/\\\\/g, '/');
+                    return ("" + file.canonicalPath).replace(/\\\\/g, "/");
                 }
             }
         }
@@ -185,7 +185,7 @@ var SMAPluginLoader = /** @class */ (function () {
         var file = new File(path + "/plugins");
         if (file.isDirectory()) {
             log("Found autoload directory " + name + "/plugins");
-            return ('' + file.canonicalPath).replace(/\\\\/g, '/');
+            return ("" + file.canonicalPath).replace(/\\\\/g, "/");
         }
     };
     return SMAPluginLoader;

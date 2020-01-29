@@ -21,18 +21,18 @@ purpose is described above.
 Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable
 var log = function (msg) { return console.log("Polyfill " + msg); };
-log('============================');
-log('= Loading ES6 Polyfills...');
-global.EventEmitter = require('./event-emitter');
+log("============================");
+log("= Loading ES6 Polyfills...");
+global.EventEmitter = require("./event-emitter");
 var _sync = [
     global.EventEmitter,
-    require('./array-from'),
-    require('./object-assign'),
-    require('./promise'),
-    require('./string'),
-    require('./array-filter'),
-    require('./array-find'),
-    require('./array-includes')
+    require("./array-from"),
+    require("./object-assign"),
+    require("./promise"),
+    require("./string"),
+    require("./array-filter"),
+    require("./array-find"),
+    require("./array-includes")
 ];
-log('============================');
+log("============================");
 exports.sync = function () { return _sync; };

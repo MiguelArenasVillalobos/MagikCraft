@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var File = java.io.File;
 var log = function (msg) { return console.log("[SMA: Test] " + msg); };
-var canonize = function (file) { return '' + file.getCanonicalPath().replaceAll('\\\\', '/'); };
-var filterTestDirs = function (dir, file) { return file.indexOf('__test') == 0; };
-var filterTestFiles = function (dir, file) { return file.indexOf('.spec.js') != -1; };
+var canonize = function (file) { return "" + file.getCanonicalPath().replaceAll("\\\\", "/"); };
+var filterTestDirs = function (dir, file) { return file.indexOf("__test") == 0; };
+var filterTestFiles = function (dir, file) { return file.indexOf(".spec.js") != -1; };
 var TestLoader = /** @class */ (function () {
     function TestLoader(path) {
         this.tests = [];

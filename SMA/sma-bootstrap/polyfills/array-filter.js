@@ -1,9 +1,9 @@
 "use strict";
-console.log('= Array.filter');
+console.log("= Array.filter");
 if (!Array.prototype.filter)
     Array.prototype.filter = function (func, thisArg) {
-        'use strict';
-        if (!((typeof func === 'function') && this))
+        "use strict";
+        if (!(typeof func === "function" && this))
             throw new TypeError();
         var len = this.length >>> 0, res = new Array(len), // preallocate array
         t = this, c = 0, i = -1;

@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -42,38 +43,38 @@ function loadJasmine() {
         var jasmine, env, jsm, failures;
         return __generator(this, function (_a) {
             global.window = this;
-            log('Loading Jasmine');
+            log("Loading Jasmine");
             load("./scriptcraft-plugins/__jasmine/jasmine.js");
             jasmine = jasmineRequire.core(jasmineRequire);
             env = jasmine.getEnv();
             jsm = jasmineRequire.interface(jasmine, env);
-            jsm.describe('Bootloader', function () {
-                jsm.it('loads Jasmine', function () {
+            jsm.describe("Bootloader", function () {
+                jsm.it("loads Jasmine", function () {
                     jsm.expect(true).toBe(true);
                 });
             });
             failures = 0;
             env.addReporter({
                 jasmineStarted: function (suiteInfo) {
-                    log('Running suite with ' + suiteInfo.totalSpecsDefined + ' tests');
+                    log("Running suite with " + suiteInfo.totalSpecsDefined + " tests");
                 },
                 suiteStarted: function (suite) {
-                    log(' ');
-                    log('\u001b[35m' + suite.description + '...\u001b[0m');
+                    log(" ");
+                    log("\u001b[35m" + suite.description + "...\u001b[0m");
                 },
                 specStarted: function (result) {
                     // log('   ' + result.description)
                 },
                 specDone: function (result) {
-                    var status = result.status === 'passed'
-                        ? '\u001b[32mpassed\u001b[0m'
-                        : '\u001b[31mfailed\u001b[0m';
-                    log('   ' + result.description + ': ' + status);
+                    var status = result.status === "passed"
+                        ? "\u001b[32mpassed\u001b[0m"
+                        : "\u001b[31mfailed\u001b[0m";
+                    log("   " + result.description + ": " + status);
                     for (var i = 0; i < result.failedExpectations.length; i++) {
                         failures++;
-                        log('\u001b[31m      Failure: ' +
+                        log("\u001b[31m      Failure: " +
                             result.failedExpectations[i].message +
-                            '\u001b[0m');
+                            "\u001b[0m");
                         // log('      ' + result.failedExpectations[i].stack)
                     }
                 },
@@ -87,12 +88,12 @@ function loadJasmine() {
                         success = 1;
                     }
                     else {
-                        log('All Jasmine tests succeeded!');
+                        log("All Jasmine tests succeeded!");
                     }
-                    log('All tests are now complete.'); // Do not change this string - it is a signal to exit the container
-                    var system = Java.type('java.lang.System');
+                    log("All tests are now complete."); // Do not change this string - it is a signal to exit the container
+                    var system = Java.type("java.lang.System");
                     system.exit(success);
-                },
+                }
             });
             global.describe = jsm.describe;
             global.it = jsm.it;

@@ -2,7 +2,7 @@
 
 Magikcraft is a patched version of [ScriptCraft](https://github.com/walterhiggins/ScriptCraft) that adds a few things that we missed:
 
-- Support for installing ScriptCraft-compatible packages from [NPM](https://www.npmjs.com/org/scriptcraft).
+- Support for installing ScriptCraft-compatible packages from [NPM](https://www.npmjs.com/org/scriptcraft), and publishing your code there to share with other developers.
 - Polyfills for modern JS like Promises, `Array.filter`, `Array.from`, `Array.includes`, `EventEmitter`, `Object.assign`, and `String.includes`.
 - Jasmine for unit-testing your code in Minecraft.
 - [Test Docker containers](https://hub.docker.com/repository/docker/magikcraft/minecraft) with various MC server / JVM combinations for testing ScriptCraft and identifying and fixing issues.
