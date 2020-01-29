@@ -1,6 +1,5 @@
 # This is for CI testing
-FROM magikcraft/minecraft:paper-1.14.2-graalvm
-
+FROM magikcraft/minecraft:nukkit-589-graalvm
 
 # Setup the working directory
 RUN mkdir /srv/github-actions-app
@@ -20,4 +19,4 @@ ARG TEST_MODE_SETTING=true
 ENV TEST_MODE=$TEST_MODE_SETTING
 
 # Run the tests
-CMD /_server_/start.sh
+RUN /_server_/start.sh

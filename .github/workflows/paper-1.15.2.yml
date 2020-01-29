@@ -1,4 +1,4 @@
-name: CI
+name: Test on Paper 1.15.2
 
 on: [push]
 
@@ -33,5 +33,5 @@ jobs:
           cp -r SMA/__jasmine/ magikcraft/scriptcraft-plugins/__jasmine/
           cp SMA/*.md magikcraft/
           cp target/scriptcraft.jar magikcraft/magik-scriptcraft.jar
-      - name: Build the Docker image
-        run: docker build . --file SMA/Dockerfile --tag magikcraft:$(date +%s)
+      - name: Run the tests in Docker
+        run: docker build . --file SMA/Dockerfile-paper-1.15.2 --tag magikcraft:$(date +%s)
