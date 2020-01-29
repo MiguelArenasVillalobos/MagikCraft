@@ -1,0 +1,50 @@
+{
+  "name": "scriptcraft-modular-arch",
+  "version": "0.3.1",
+  "description": "Scriptcraft Modular Architecture",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"No tests\" && exit 0",
+    "dev": "cd SMA && tsc -w",
+    "build": "cd SMA && tsc "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Magikcraft/MagikCraft.git"
+  },
+  "keywords": [
+    "minecraft",
+    "scriptcraft",
+    "javascript"
+  ],
+  "author": "Josh Wulf <josh@magikcraft.io>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Magikcraft/MagikCraft/issues"
+  },
+  "homepage": "https://github.com/Magikcraft/MagikCraft#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc && git add . && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4",
+    "typescript": "^3.7.3"
+  },
+  "private": true,
+  "dependencies": {
+    "@types/jasmine": "^3.3.12"
+  }
+}

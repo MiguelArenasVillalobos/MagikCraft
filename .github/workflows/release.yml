@@ -10,15 +10,37 @@ jobs:
   build:
     name: Create Release
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@master
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run build --if-present
+      - run: npm test
+        env:
+          CI: true
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
       - name: Build with Ant
         run: ant -noinput -buildfile build.xml
+      - name: Build release zip
+        run: mkdir -p magikcraft/scriptcraft
+        run: mv target/js/* magikcraft/scriptcraft/
+        run: cp -r src/main/js/* magikcraft/scriptcraft/
+        run: cp -r SMA/sma-bootstrap magikcraft/scriptcraft/plugins
+        run: mkdir -p magikcraft/scriptcraft-plugins/__jasmine
+        run: cp -r js/__jasmine/ magikcraft/scriptcraft-plugins/__jasmine/
+        run: cp target/scriptcraft.jar magikcraft/magik-scriptcraft.jar
+        run: zip magikcraft magikcraft-release.zip
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -33,13 +55,13 @@ jobs:
             - Second Change
           draft: false
           prerelease: false
-      - name: Upload Release Asset
+      - name: Upload Release Assets
         id: upload-release-asset
         uses: actions/upload-release-asset@v1.0.1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ./target/scriptcraft.jar
-          asset_name: scriptcraft.jar
-          asset_content_type: application/java-archive
+            upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+            asset_path: ./magikcraft-release.zip
+            asset_name: Magikcraft-release-${{ github.ref }}.zip
+            asset_content_type: application/zip
