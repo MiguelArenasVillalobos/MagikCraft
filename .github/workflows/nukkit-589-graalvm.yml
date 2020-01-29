@@ -31,7 +31,7 @@ jobs:
           cp -r src/main/js/* magikcraft/scriptcraft/
           cp -r SMA/sma-bootstrap magikcraft/scriptcraft/plugins
           mkdir -p magikcraft/scriptcraft-plugins/__jasmine
-          cp -r SMA/__jasmine/ magikcraft/scriptcraft-plugins/__jasmine/
+          cp -r SMA/__jasmine/* magikcraft/scriptcraft-plugins/__jasmine/
           cp SMA/*.md magikcraft/
           cp target/scriptcraft.jar magikcraft/magik-scriptcraft.jar
       - name: Run the tests in Docker

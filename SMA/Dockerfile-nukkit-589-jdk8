@@ -8,7 +8,8 @@ WORKDIR /_server_
 COPY magikcraft/scriptcraft scriptcraft
 RUN mkdir plugins
 COPY magikcraft/magik-scriptcraft.jar plugins/magik-scriptcraft.jar
-COPY magikcraft/scriptcraft-plugins scriptcraft-plugins
+RUN mkdir scriptcraft-plugins
+COPY magikcraft/scriptcraft-plugins/* scriptcraft-plugins/
 COPY SMA/scriptcraft-tests scriptcraft-plugins/
 
 # Accept Minecraft EULA
