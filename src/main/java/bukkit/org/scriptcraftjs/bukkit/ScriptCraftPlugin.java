@@ -28,7 +28,7 @@ public class ScriptCraftPlugin extends JavaPlugin {
         currentThread.setContextClassLoader(getClassLoader());
         try {
             ScriptEngineManager factory = new ScriptEngineManager(null);
-            this.engine = factory.getEngineByName("JavaScript");
+            this.engine = factory.getEngineByName("nashorn");
             if (this.engine == null) {
                 this.getLogger().severe(NO_JAVASCRIPT_MESSAGE);
             } else {
