@@ -53,11 +53,13 @@ var SMAPluginLoader = /** @class */ (function () {
     }
     SMAPluginLoader.prototype.loadSMAPlugins = function (testMode) {
         return __awaiter(this, void 0, void 0, function () {
-            var smaPlugins, packages;
+            var disableSMAPluginLoading, smaPlugins, packages;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (__disableSMAPluginLoading) {
+                        disableSMAPluginLoading = typeof __disableSMAPluginLoading !== "undefined" &&
+                            __disableSMAPluginLoading;
+                        if (disableSMAPluginLoading) {
                             log("SMA Plugin loading disabled");
                             return [2 /*return*/];
                         }

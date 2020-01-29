@@ -21,7 +21,10 @@ export class SMAPluginLoader {
   absolutePluginPath = p => `${this.smaPluginsRootDirName}/${p}`;
 
   async loadSMAPlugins(testMode) {
-    if (__disableSMAPluginLoading) {
+    const disableSMAPluginLoading =
+      typeof __disableSMAPluginLoading !== "undefined" &&
+      __disableSMAPluginLoading;
+    if (disableSMAPluginLoading) {
       log("SMA Plugin loading disabled");
       return;
     }
