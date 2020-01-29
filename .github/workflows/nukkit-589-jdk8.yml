@@ -1,4 +1,4 @@
-name: Test on Paper 1.15.2
+name: Test on Nukkit 589 JDK 8
 
 on: [push]
 
@@ -6,6 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 12.x
@@ -34,4 +35,4 @@ jobs:
           cp SMA/*.md magikcraft/
           cp target/scriptcraft.jar magikcraft/magik-scriptcraft.jar
       - name: Run the tests in Docker
-        run: docker build . --file SMA/Dockerfile-paper-1.15.2 --tag magikcraft:$(date +%s)
+        run: docker build . --file SMA/Dockerfile-nukkit-589-jdk8 --tag magikcraft:$(date +%s)

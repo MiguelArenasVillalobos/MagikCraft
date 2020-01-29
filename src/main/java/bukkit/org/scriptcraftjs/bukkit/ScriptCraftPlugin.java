@@ -39,6 +39,9 @@ public class ScriptCraftPlugin extends JavaPlugin {
         } catch (Exception e) {
             e.printStackTrace();
             this.getLogger().severe(e.getMessage());
+            if (System.getenv("TEST_MODE").equals("true")) {
+                System.exit(1);
+            }
         } finally {
             currentThread.setContextClassLoader(previousClassLoader);
         }

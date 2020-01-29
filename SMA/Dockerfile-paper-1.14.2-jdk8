@@ -1,0 +1,23 @@
+# This is for CI testing
+FROM magikcraft/minecraft:paper-1.14.2-jdk8
+
+
+# Setup the working directory
+RUN mkdir /srv/github-actions-app
+WORKDIR /_server_
+
+COPY magikcraft/scriptcraft scriptcraft
+RUN mkdir plugins
+COPY magikcraft/magik-scriptcraft.jar plugins/magik-scriptcraft.jar
+COPY magikcraft/scriptcraft-plugins scriptcraft-plugins
+COPY SMA/scriptcraft-tests scriptcraft-plugins/
+
+# Accept Minecraft EULA
+RUN echo "eula=true" >> eula.txt
+
+# From here: https://vsupalov.com/docker-build-time-env-values/
+ARG TEST_MODE_SETTING=true
+ENV TEST_MODE=$TEST_MODE_SETTING
+
+# Run the tests
+RUN /_server_/start.sh
