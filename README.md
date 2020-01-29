@@ -1,5 +1,9 @@
 # Magikcraft
 
+![CI](https://github.com/Magikcraft/MagikCraft/workflows/CI/badge.svg)
+
+[![](https://images.microbadger.com/badges/version/magikcraft/scriptcraft:1.15.2.svg)](https://hub.docker.com/repository/docker/magikcraft/scriptcraft/ "Paperclip 1.15.2 and GraalVM")
+
 Magikcraft is a patched version of [ScriptCraft](https://github.com/walterhiggins/ScriptCraft) that adds a few things that we missed:
 
 - Support for installing ScriptCraft-compatible packages from [NPM](https://www.npmjs.com/org/scriptcraft), and publishing your code there to share with other developers.
@@ -14,3 +18,7 @@ You can install Magikcraft in your own Bukkit-compatible Minecraft server (see I
 When used with the [`smac`](https://www.npmjs.com/package/smac) command-line utility, you can run a dockerised Magikcraft server with a TypeScript / JavaScript REPL at the console.
 
 You can create your own Magikcraft-compatible NPM packages using our [Yeoman generator](https://www.npmjs.com/package/generator-sma-plugin).
+
+## Relationship with ScriptCraft
+
+MagikCraft is [downstream](https://reflectoring.io/upstream-downstream/#upstream-and-downstream-open-source-projects) from ScriptCraft. We maintain our own patch set and testing in Magikcraft, and contribute fixes to ScriptCraft code upstream to the ScriptCraft project, so that the wider ScriptCraft community benefits from them.

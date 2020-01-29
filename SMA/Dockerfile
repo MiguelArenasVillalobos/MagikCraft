@@ -19,4 +19,5 @@ ENV TEST_MODE=$TEST_MODE_SETTING
 ENV MINECRAFT_EULA_ACCEPTED=$EULA_SETTING
 
 # Run the tests
-RUN /_server_/start.sh
+CMD ["java", "-jar", "minecraft.jar"]
+
