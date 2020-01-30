@@ -13,7 +13,7 @@ var TestLoader = /** @class */ (function () {
     TestLoader.prototype.findTests = function () {
         var _this = this;
         log("Looking for tests in " + this.path);
-        return Java.from(this.path.list(filterTestDirs))
+        return (Java.from(this.path.list(filterTestDirs)) || [])
             .map(function (n) {
             var testDirPath = _this.path + "/" + n;
             log("Looking for tests in " + testDirPath);

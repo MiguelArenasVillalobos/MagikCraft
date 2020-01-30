@@ -15,7 +15,7 @@ export class TestLoader {
 
   findTests() {
     log(`Looking for tests in ${this.path}`);
-    return Java.from(this.path.list(filterTestDirs))
+    return (Java.from(this.path.list(filterTestDirs)) || [])
       .map(n => {
         const testDirPath = `${this.path}/${n}`;
         log(`Looking for tests in ${testDirPath}`);

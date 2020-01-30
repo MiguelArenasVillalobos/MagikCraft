@@ -11,7 +11,7 @@ RUN mkdir plugins
 COPY magikcraft/magik-scriptcraft.jar plugins/magik-scriptcraft.jar
 RUN mkdir scriptcraft-plugins
 COPY magikcraft/scriptcraft-plugins/* scriptcraft-plugins/
-COPY SMA/scriptcraft-tests scriptcraft-plugins/
+COPY SMA/scriptcraft-tests scriptcraft-plugins/scriptcraft-tests
 
 # Accept Minecraft EULA
 RUN echo "eula=true" >> eula.txt

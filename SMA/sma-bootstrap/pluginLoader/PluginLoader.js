@@ -91,14 +91,14 @@ var SMAPluginLoader = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, packages];
                     case 1:
-                        loadDirs = (_a.sent())
+                        loadDirs = ((_a.sent()) || [])
                             .map(function (p) {
                             return _this.getLoadDirectoryFromPackageJson(p) ||
                                 _this.checkDefaultPluginsDir(p);
                         })
                             .filter(function (t) { return t; });
                         // Map, rather than forEach, for synchronisation
-                        return [2 /*return*/, loadDirs.map(function (d) {
+                        return [2 /*return*/, (loadDirs || []).map(function (d) {
                                 try {
                                     log("Loading " + d + "...");
                                     loader.autoloadAlphabetically(global, d);

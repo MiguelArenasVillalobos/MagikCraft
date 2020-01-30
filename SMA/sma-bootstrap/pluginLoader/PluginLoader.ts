@@ -50,7 +50,7 @@ export class SMAPluginLoader {
   }
 
   async autoLoad(packages) {
-    const loadDirs = (await packages)
+    const loadDirs = ((await packages) || [])
       .map(
         p =>
           this.getLoadDirectoryFromPackageJson(p) ||
@@ -59,7 +59,7 @@ export class SMAPluginLoader {
       .filter(t => t);
 
     // Map, rather than forEach, for synchronisation
-    return loadDirs.map(d => {
+    return (loadDirs || []).map(d => {
       try {
         log(`Loading ${d}...`);
         loader.autoloadAlphabetically(global, d);
