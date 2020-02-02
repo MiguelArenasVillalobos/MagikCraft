@@ -1,11 +1,21 @@
-name: Test on Paper 1.14.2 GraalVM
+name: Test
 
 on: [push]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        dockertag:
+          [
+            paper-1.14.2-jdk8,
+            paper-1.14.2-graalvm,
+            paper-1.15.2-jdk8,
+            paper-1.15.2-graalvm,
+            nukkit-589-graalvm,
+            nukkit-589-jdk8,
+          ]
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
@@ -25,4 +35,4 @@ jobs:
       - name: Build release
         run: npm run build:dist
       - name: Run the tests in Docker
-        run: docker build . --file SMA/Dockerfile --build-arg image_tag=paper-1.14.2-graalvm --tag magikcraft:$(date +%s)
+        run: docker build . --file SMA/Dockerfile --build-arg image_tag=${{matrix.dockertag}} --tag magikcraft:${{matrix.dockertag}}
