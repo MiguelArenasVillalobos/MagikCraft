@@ -29,7 +29,7 @@
   "homepage": "https://github.com/Magikcraft/MagikCraft#readme",
   "husky": {
     "hooks": {
-      "pre-commit": "tsc && git add . && lint-staged"
+      "pre-commit": "cd SMA && tsc && git add . && lint-staged"
     }
   },
   "lint-staged": {
