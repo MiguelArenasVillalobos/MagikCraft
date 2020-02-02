@@ -32,3 +32,14 @@ You can create your own Magikcraft-compatible NPM packages using our [Yeoman gen
 ## Relationship with ScriptCraft
 
 MagikCraft is [downstream](https://reflectoring.io/upstream-downstream/#upstream-and-downstream-open-source-projects) from ScriptCraft. We maintain our own patch set and testing in Magikcraft, and contribute fixes to ScriptCraft code upstream to the ScriptCraft project, so that the wider ScriptCraft community benefits from them.
+
+## Building from source
+
+Pre-requisites:
+
+- Java JDK
+- ant
+- Node.JS
+- NPM
+
+Run the command `npm run build:dist`. This will build the distribution in the `build` directory.

@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"No tests\" && exit 0",
     "dev": "cd SMA && tsc -w",
-    "build": "cd SMA && tsc "
+    "build": "cd SMA && tsc ",
+    "build:dist": "./build-dist.sh"
   },
   "repository": {
     "type": "git",
