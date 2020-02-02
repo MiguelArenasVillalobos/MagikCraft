@@ -35,8 +35,8 @@ jobs:
       - name: Archive Dockerfile
         uses: actions/upload-artifact@v1
         with:
-          name: Dockerfile
-          path: SMA/Dockerfile-release
+          name: SMA
+          path: SMA
       - name: Build release zip
         run: zip -r magikcraft-release.zip build/*
       - name: Create Release
@@ -99,6 +99,6 @@ jobs:
           name: magikcraft/magikcraft
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          dockerfile: Dockerfile
+          dockerfile: SMA/Dockerfile-release
           buildargs: source_image_tag=${dockertag}
           tags: "${{matrix.dockertag}}-${{ steps.get_version.outputs.VERSION }}"
