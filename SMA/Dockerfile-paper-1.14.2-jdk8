@@ -8,7 +8,7 @@ WORKDIR /_server_
 
 COPY build/scriptcraft scriptcraft
 RUN mkdir plugins
-COPY build/magik-scriptcraft.jar plugins/magik-scriptcraft.jar
+COPY build/plugins/magik-scriptcraft.jar plugins/magik-scriptcraft.jar
 RUN mkdir -p scriptcraft-plugins/__jasmineß
 COPY build/scriptcraft-plugins/__jasmine scriptcraft-plugins/__jasmine
 COPY SMA/scriptcraft-tests scriptcraft-plugins/scriptcraft-tests
