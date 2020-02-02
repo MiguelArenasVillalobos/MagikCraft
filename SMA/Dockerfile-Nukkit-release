@@ -1,0 +1,13 @@
+# This is for Release to Docker Hub via CI in GitHub Actions
+ARG image_tag
+FROM magikcraft/minecraft:${image_tag}
+
+# Setup the working directory
+RUN mkdir /srv/github-actions-app
+WORKDIR /_server_
+
+COPY build/ ./
+# Nukkit needs the plugin in a Pokkit sub-directory
+RUN mkdir plugins/Pokkit && mv plugins/*.jar plugins/Pokkit/
+
+CMD /_server_/start.sh
