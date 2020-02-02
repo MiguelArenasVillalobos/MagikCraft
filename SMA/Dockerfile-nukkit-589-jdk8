@@ -5,7 +5,7 @@ FROM magikcraft/minecraft:nukkit-589-jdk8
 RUN mkdir /srv/github-actions-app
 WORKDIR /_server_
 
-COPY build/* . 
+COPY build/ ./ 
 COPY SMA/scriptcraft-tests scriptcraft-plugins/scriptcraft-tests
 
 # Accept Minecraft EULA
