@@ -76,7 +76,7 @@ jobs:
           [
             paper-1.14.2-jdk8,
             paper-1.14.2-graalvm,
-            paper-1.15.2-jdk,
+            paper-1.15.2-jdk8,
             paper-1.15.2-graalvm,
             nukkit-589-graalvm,
             nukkit-589-jdk8,
@@ -101,4 +101,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           dockerfile: SMA/Dockerfile-release
           buildargs: image_tag=${{matrix.dockertag}}
-          tags: "${{matrix.dockertag}}-${{ steps.get_version.outputs.VERSION }}"
+          tags: "${{matrix.dockertag}}-${{ steps.get_version.outputs.VERSION }}, ${{matrix.dockertag}}-latest"
