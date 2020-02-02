@@ -91,5 +91,5 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           dockerfile: SMA/Dockerfile-release
-          buildargs: image_tag=${dockertag}
-          tags: ${{ dockertag }}-${{ steps.get_version.outputs.VERSION }}
+          buildargs: source_image_tag=${dockertag}
+          tags: "${dockertag}-${{ steps.get_version.outputs.VERSION }}"
