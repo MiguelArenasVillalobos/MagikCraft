@@ -25,4 +25,4 @@ jobs:
       - name: Build release
         run: npm run build:dist
       - name: Run the tests in Docker
-        run: docker build . --file SMA/Dockerfile-paper-1.14.2-jdk8 --tag magikcraft:$(date +%s)
+        run: docker build . --file SMA/Dockerfile --build-arg image_tag=paper-1.14.2-jdk8 --tag magikcraft:$(date +%s)

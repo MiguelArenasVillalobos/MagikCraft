@@ -25,4 +25,4 @@ jobs:
       - name: Build release
         run: npm run build:dist
       - name: Run the tests in Docker
-        run: docker build . --file SMA/Dockerfile-nukkit-589-graalvm --tag magikcraft:$(date +%s)
+        run: docker build . --file SMA/Dockerfile --build-arg image_tag=nukkit-589-graalvm --tag magikcraft:$(date +%s)

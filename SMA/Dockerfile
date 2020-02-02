@@ -1,11 +1,12 @@
-# This is for CI testing
-FROM magikcraft/minecraft:paper-1.15.2-jdk8
+# This is for CI in GitHub Actions
+ARG image_tag
+FROM magikcraft/minecraft:${image_tag}
 
 # Setup the working directory
 RUN mkdir /srv/github-actions-app
 WORKDIR /_server_
 
-COPY build/ ./ 
+COPY build/ ./
 COPY SMA/scriptcraft-tests scriptcraft-plugins/scriptcraft-tests
 
 # Accept Minecraft EULA
