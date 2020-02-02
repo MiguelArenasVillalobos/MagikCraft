@@ -22,17 +22,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Build with Ant
-        run: ant -noinput -buildfile build.xml
       - name: Build release
-        run: |
-          mkdir -p magikcraft/scriptcraft
-          mv target/js/* magikcraft/scriptcraft/
-          cp -r src/main/js/* magikcraft/scriptcraft/
-          cp -r SMA/sma-bootstrap magikcraft/scriptcraft/plugins
-          mkdir -p magikcraft/scriptcraft-plugins/__jasmine
-          cp -r SMA/__jasmine/* magikcraft/scriptcraft-plugins/__jasmine/
-          cp SMA/*.md magikcraft/
-          cp target/scriptcraft.jar magikcraft/magik-scriptcraft.jar
+        run: npm run build:dist
       - name: Run the tests in Docker
         run: docker build . --file SMA/Dockerfile-paper-1.14.2-graalvm --tag magikcraft:$(date +%s)
