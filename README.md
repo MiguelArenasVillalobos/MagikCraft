@@ -1,16 +1,6 @@
 # Magikcraft
 
-![Nukkit 589 JDK 8](https://github.com/Magikcraft/MagikCraft/workflows/Test%20on%20Nukkit%20589%20JDK%208/badge.svg)
-
-![Nukkit 589 GraalVM](https://github.com/Magikcraft/MagikCraft/workflows/Test%20on%20Nukkit%20589%20GraalVM/badge.svg)
-
-![Paper 1.14.2 JDK 8](https://github.com/Magikcraft/MagikCraft/workflows/Test%20on%20Paper%201.14.2%20JDK%208/badge.svg)
-
-![Paper 1.14.2 GraalVM](https://github.com/Magikcraft/MagikCraft/workflows/Test%20on%20Paper%201.14.2%20GraalVM/badge.svg)
-
-![Paper 1.15.2 JDK 8](https://github.com/Magikcraft/MagikCraft/workflows/Test%20on%20Paper%201.15.2%20JDK%208/badge.svg)
-
-![Paper 1.15.2 GraalVM](https://github.com/Magikcraft/MagikCraft/workflows/Test%20on%20Paper%201.15.2%20GraalVM/badge.svg)
+![Test](https://github.com/Magikcraft/MagikCraft/workflows/Test/badge.svg?branch=development)
 
 [![Docker Image](https://images.microbadger.com/badges/version/magikcraft/scriptcraft:1.15.2.svg)](https://hub.docker.com/repository/docker/magikcraft/scriptcraft/ "Docker image: Paperclip 1.15.2 and GraalVM")
 
