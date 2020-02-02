@@ -8,6 +8,7 @@ WORKDIR /_server_
 
 COPY build/ ./
 # Nukkit needs the plugin in a Pokkit sub-directory
-RUN mkdir plugins/Pokkit && mv plugins/magik-scriptcraft.jar plugins/Pokkit/
+RUN mkdir -p plugins/Pokkit/bukkitPlugins && \
+  mv plugins/magik-scriptcraft.jar plugins/Pokkit/bukkitPlugins/
 
 CMD /_server_/start.sh
