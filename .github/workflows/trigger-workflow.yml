@@ -1,0 +1,21 @@
+name: Test
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get current time
+        uses: gerred/actions/current-time@master
+        id: current-time
+      - name: Kick off workflow
+        uses: jwulf/zeebe-action@0.2.0
+        with:
+          zeebe_address: ${{ secrets.ZEEBE_ADDRESS }}
+          zeebe_client_id: ${{ secrets.ZEEBE_CLIENT_ID }}
+          zeebe_authorization_server_url: ${{ secrets.ZEEBE_AUTHORIZATION_SERVER_URL }}
+          zeebe_client_secret: ${{ secrets.ZEEBE_CLIENT_SECRET }}
+          operation: publishMessage
+          message_name: MAGIKCRAFT_API_PUSH
+          variables: '{"buildid": "${{ github.sha }}-${{ steps.current-time.outputs.time }}", "gitHubToken": "Bearer {{GitHubToken}}" }'

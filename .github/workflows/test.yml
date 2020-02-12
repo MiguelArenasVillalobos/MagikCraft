@@ -1,11 +1,13 @@
 name: Test
 
-on: [push]
+on: [repository_dispatch]
 
 jobs:
   test:
+    if: github.event.client_payload.test_passed !== 'true'
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         dockertag:
           [
@@ -36,3 +38,18 @@ jobs:
         run: npm run build:dist
       - name: Run the tests in Docker
         run: docker build . --file SMA/Dockerfile --build-arg image_tag=${{matrix.dockertag}} --tag magikcraft:${{matrix.dockertag}}
+  report_success:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Tell Camunda Cloud What's up!
+        uses: jwulf/zeebe-action@0.2.0
+        with:
+          zeebe_address: ${{ secrets.ZEEBE_ADDRESS }}
+          zeebe_client_id: ${{ secrets.ZEEBE_CLIENT_ID }}
+          zeebe_authorization_server_url: ${{ secrets.ZEEBE_AUTHORIZATION_SERVER_URL }}
+          zeebe_client_secret: ${{ secrets.ZEEBE_CLIENT_SECRET }}
+          operation: publishMessage
+          message_name: MAGIKCRAFT_API_GREEN
+          correlationKey: ${{ github.event.client_payload.buildid }}
+          variables: '{"test_passed": "true"}'
