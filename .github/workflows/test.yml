@@ -4,7 +4,7 @@ on: [repository_dispatch]
 
 jobs:
   test:
-    if: github.event.event_type == 'TYPE_TEST'
+    if: github.event.action == 'TYPE_TEST'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
