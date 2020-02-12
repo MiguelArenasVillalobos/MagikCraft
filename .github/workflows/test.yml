@@ -4,7 +4,7 @@ on: [repository_dispatch]
 
 jobs:
   test:
-    if: github.event_type == 'TYPE_TEST'
+    if: github.event.event_type == 'TYPE_TEST'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -52,4 +52,3 @@ jobs:
           operation: publishMessage
           message_name: MAGIKCRAFT_API_GREEN
           correlationKey: ${{ github.event.client_payload.buildid }}
-          variables: '{"test_passed": "true"}'

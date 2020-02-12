@@ -5,7 +5,7 @@ on:
 jobs:
   package:
     runs-on: ubuntu-latest
-    if: github.event_type == 'TYPE_PUBLISH'
+    if: github.event.event_type == 'TYPE_PUBLISH'
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 12.x
