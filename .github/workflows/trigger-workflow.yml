@@ -18,4 +18,4 @@ jobs:
           zeebe_client_secret: ${{ secrets.ZEEBE_CLIENT_SECRET }}
           operation: publishMessage
           message_name: MAGIKCRAFT_API_PUSH
-          variables: '{"buildid": "${{ github.sha }}-${{ steps.current-time.outputs.time }}", "gitHubToken": "Bearer {{GitHubToken}}", , "TYPE_TEST": "TYPE_TEST", "TYPE_PUBLISH": "TYPE_PUBLISH"}'
+          variables: '{"buildid": "${{ github.sha }}-${{ steps.current-time.outputs.time }}", "gitHubToken": "Bearer {{GitHubToken}}", "TYPE_TEST": "TYPE_TEST", "TYPE_PUBLISH": "TYPE_PUBLISH"}'
