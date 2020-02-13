@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        minecraft: [paper-1.14.2, paper-1.15.2]
+        minecraft: [paper-1.14.4, paper-1.15.2]
         vm: [graalvm, openjdk8]
     steps:
       - name: Download build for job 2
