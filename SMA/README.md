@@ -18,3 +18,9 @@ You can create your own Magikcraft-compatible NPM packages using our [Yeoman gen
 ## Relationship with ScriptCraft
 
 MagikCraft is [downstream](https://reflectoring.io/upstream-downstream/#upstream-and-downstream-open-source-projects) from ScriptCraft. We maintain our own patch set and testing in Magikcraft, and contribute fixes to ScriptCraft code upstream to the ScriptCraft project, so that the wider ScriptCraft community benefits from them.
+
+## Building
+
+## Builds
+
+Building is accomplished via GitHub workflows orchestrated by Camunda Cloud. The BPMN model is [here](https://github.com/Magikcraft/MagikCraft/blob/development/automation/magikcraft-github-build.bpmn), and the build system is described in [this article](https://medium.com/@sitapati/complex-multi-repo-builds-with-github-actions-and-camunda-cloud-fa8e4c7abd26).
