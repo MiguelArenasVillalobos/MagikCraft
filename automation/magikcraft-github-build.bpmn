@@ -52,7 +52,7 @@
           <zeebe:output source="build_timed_out_set_true_to_retry" target="dummy" />
         </zeebe:ioMapping>
         <zeebe:taskHeaders>
-          <zeebe:header key="url" value="https://google.com" />
+          <zeebe:header key="url" value="https://reqres.in/api/products/1" />
           <zeebe:header key="method" value="get" />
         </zeebe:taskHeaders>
       </bpmn:extensionElements>
@@ -120,7 +120,6 @@
           </zeebe:taskHeaders>
           <zeebe:ioMapping>
             <zeebe:input source="gitHubToken" target="authorization" />
-            <zeebe:input source="test_passed" target="body.client_payload.test_passed" />
             <zeebe:input source="buildid" target="body.client_payload.buildid" />
             <zeebe:input source="TYPE_PUBLISH" target="body.event_type" />
           </zeebe:ioMapping>
@@ -147,7 +146,7 @@
           <zeebe:output source="build_timed_out_set_true_to_retry" target="dummy" />
         </zeebe:ioMapping>
         <zeebe:taskHeaders>
-          <zeebe:header key="url" value="https://www.google.com" />
+          <zeebe:header key="url" value="https://reqres.in/api/products/1" />
           <zeebe:header key="method" value="get" />
         </zeebe:taskHeaders>
       </bpmn:extensionElements>
@@ -210,7 +209,7 @@
           <zeebe:output source="build_timed_out_set_true_to_retry" target="dummy" />
         </zeebe:ioMapping>
         <zeebe:taskHeaders>
-          <zeebe:header key="url" value="https://www.google.com" />
+          <zeebe:header key="url" value="https://reqres.in/api/products/1" />
           <zeebe:header key="method" value="get" />
         </zeebe:taskHeaders>
       </bpmn:extensionElements>
@@ -429,7 +428,7 @@
         <dc:Bounds x="580" y="820" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_0ghyykt_di" bpmnElement="TextAnnotation_0ghyykt">
-        <dc:Bounds x="340" y="780" width="210" height="50" />
+        <dc:Bounds x="340" y="780" width="209.9935137138621" height="49.99073387694589" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_132fwua_di" bpmnElement="Association_132fwua">
         <di:waypoint x="580" y="845" />
