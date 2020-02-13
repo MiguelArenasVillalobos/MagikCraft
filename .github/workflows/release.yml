@@ -72,13 +72,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dockertag:
-          [
-            paper-1.14.2-jdk8,
-            paper-1.14.2-graalvm,
-            paper-1.15.2-jdk8,
-            paper-1.15.2-graalvm,
-          ]
+        minecraft: [paper-1.14.2, paper-1.15.2]
+        vm: [graalvm, openjdk8]
     steps:
       - name: Download build for job 2
         uses: actions/download-artifact@v1
@@ -98,15 +93,16 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           dockerfile: SMA/Dockerfile-release
-          buildargs: image_tag=${{matrix.dockertag}}
-          tags: "${{matrix.dockertag}}-${{ steps.get_version.outputs.VERSION }}, ${{matrix.dockertag}}-latest"
+          buildargs: image_tag=${{matrix.minecraft}}-${{matrix.vm}}
+          tags: "${{matrix.minecraft}}-${{matrix.vm}}-${{ steps.get_version.outputs.VERSION }}, ${{matrix.minecraft}}-${{matrix.vm}}-latest"
   dockerNukkit:
     name: Publish Docker images
     needs: release
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dockertag: [nukkit-589-graalvm, nukkit-589-jdk8]
+        minecraft: [nukkit-1.0, nukkit-2.0]
+        vm: [graalvm, openjdk8]
     steps:
       - name: Download build for job 3
         uses: actions/download-artifact@v1
@@ -126,5 +122,5 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           dockerfile: SMA/Dockerfile-Nukkit-release
-          buildargs: image_tag=${{matrix.dockertag}}
-          tags: "${{matrix.dockertag}}-${{ steps.get_version.outputs.VERSION }}, ${{matrix.dockertag}}-latest"
+          buildargs: image_tag=${{matrix.minecraft}}-${{matrix.vm}}
+          tags: "${{matrix.minecraft}}-${{matrix.vm}}-${{ steps.get_version.outputs.VERSION }}, ${{matrix.dockertag}}-latest"
