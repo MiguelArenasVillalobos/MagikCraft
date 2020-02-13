@@ -1,4 +1,4 @@
-name: Test
+name: Matrix Test API
 
 on: [repository_dispatch]
 
