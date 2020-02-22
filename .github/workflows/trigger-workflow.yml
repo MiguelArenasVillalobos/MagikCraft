@@ -7,12 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Deploy Demo Workflows
+      - name: Deploy Workflows
         uses: jwulf/zeebe-action@master
         with:
-          zeebe_client_config: ${{ secrets.ZEEBE_CLIENT_CONFIG }}
+          clientConfig: ${{ secrets.ZEEBE_CLIENT_CONFIG }}
           operation: deployWorkflow
-          bpmn_directory: automation
+          bpmnDirectory: automation
       - name: Get current time
         uses: gerred/actions/current-time@master
         id: current-time
@@ -20,5 +20,5 @@ jobs:
         uses: jwulf/zeebe-action@0.2.0
         with:
           operation: publishMessage
-          message_name: MAGIKCRAFT_API_PUSH
+          messageName: MAGIKCRAFT_API_PUSH
           variables: '{"buildid": "${{ github.sha }}-${{ steps.current-time.outputs.time }}", "gitHubToken": "Bearer {{GitHubToken}}", "TYPE_TEST": "TYPE_TEST", "TYPE_PUBLISH": "TYPE_PUBLISH"}'

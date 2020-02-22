@@ -92,8 +92,8 @@ jobs:
       - name: Tell Camunda Cloud What's up!
         uses: jwulf/zeebe-action@0.2.0
         with:
-          zeebe_client_config: ${{ secrets.ZEEBE_CLIENT_CONFIG }}
+          clientConfig: ${{ secrets.ZEEBE_CLIENT_CONFIG }}
           operation: publishMessage
-          message_name: MAGIKCRAFT_TEST_CONTAINERS_BUILT
+          messageName: MAGIKCRAFT_TEST_CONTAINERS_BUILT
           correlationKey: ${{ github.event.client_payload.buildid }}
           variables: '{"test_containers_published": "true"}'
