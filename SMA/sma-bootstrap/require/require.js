@@ -190,6 +190,14 @@ See license-scriptcraft.txt
           debug("Resolved:" + resolvedFile); // @DEBUG
           return fileExists(resolvedFile);
         }
+        resolvedFile = new File(
+          parentDir + nodeModulePaths[i] + moduleName + ".js"
+        );
+        debug("Searching " + resolvedFile);
+        if (resolvedFile.exists()) {
+          debug("Resolved:" + resolvedFile); // @DEBUG
+          return fileExists(resolvedFile);
+        }
       }
     } else {
       debug(
