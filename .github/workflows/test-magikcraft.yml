@@ -62,7 +62,7 @@ jobs:
           name: magikcraft/magikcraft
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          dockerfile: SMA/Dockerfile-Nukkit-release
+          dockerfile: SMA/Dockerfile-Nukkit-Scriptcraft-release
           buildargs: image_tag=${{matrix.minecraft}}-${{matrix.vm}}-test
           tags: "${{matrix.minecraft}}-${{matrix.vm}}-test"
   report_success:
