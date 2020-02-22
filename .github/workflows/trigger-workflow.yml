@@ -21,4 +21,4 @@ jobs:
         with:
           operation: publishMessage
           messageName: MAGIKCRAFT_API_PUSH
-          variables: '{"buildid": "${{ github.sha }}-${{ steps.current-time.outputs.time }}", "gitHubToken": "Bearer {{GitHubToken}}", "TYPE_TEST": "TYPE_TEST", "TYPE_PUBLISH": "TYPE_PUBLISH"}'
+          variables: '{"buildid": "${{ github.sha }}-${{ steps.current-time.outputs.time }}", "gitHubToken": "Bearer {{GitHubToken}}", "TYPE_TEST": "TYPE_TEST", "TYPE_TEST_MAGIKCRAFT": "TYPE_TEST_MAGIKCRAFT", "TYPE_PUBLISH": "TYPE_PUBLISH"}'

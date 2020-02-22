@@ -107,7 +107,7 @@
         <bpmn:messageEventDefinition messageRef="Message_080c5jz" />
       </bpmn:intermediateCatchEvent>
       <bpmn:endEvent id="EndEvent_1jv82he" name="All tests passed">
-        <bpmn:incoming>SequenceFlow_1x8p27f</bpmn:incoming>
+        <bpmn:incoming>SequenceFlow_1al2k0z</bpmn:incoming>
       </bpmn:endEvent>
       <bpmn:sequenceFlow id="SequenceFlow_0fv9byf" sourceRef="IntermediateThrowEvent_1mcgfmz" targetRef="Task_0k7isyc" />
       <bpmn:serviceTask id="Task_0k7isyc" name="Publish test containers">
@@ -127,12 +127,29 @@
         <bpmn:outgoing>SequenceFlow_01545o3</bpmn:outgoing>
       </bpmn:serviceTask>
       <bpmn:sequenceFlow id="SequenceFlow_01545o3" sourceRef="Task_0k7isyc" targetRef="IntermediateThrowEvent_15vaj2e" />
-      <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_15vaj2e" name="MAGIKCRAFT_TEST_CONTAINERS_BUILT">
+      <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_15vaj2e" name="SCRIPTCRAFT_TEST_CONTAINERS_BUILT">
         <bpmn:incoming>SequenceFlow_01545o3</bpmn:incoming>
         <bpmn:outgoing>SequenceFlow_1x8p27f</bpmn:outgoing>
         <bpmn:messageEventDefinition messageRef="Message_0gl46jv" />
       </bpmn:intermediateCatchEvent>
-      <bpmn:sequenceFlow id="SequenceFlow_1x8p27f" sourceRef="IntermediateThrowEvent_15vaj2e" targetRef="EndEvent_1jv82he" />
+      <bpmn:sequenceFlow id="SequenceFlow_1x8p27f" sourceRef="IntermediateThrowEvent_15vaj2e" targetRef="Task_1mu6hnb" />
+      <bpmn:sequenceFlow id="SequenceFlow_1al2k0z" sourceRef="Task_1mu6hnb" targetRef="EndEvent_1jv82he" />
+      <bpmn:serviceTask id="Task_1mu6hnb" name="Matrix test Magikcraft">
+       <bpmn:extensionElements>
+          <zeebe:taskDefinition type="CAMUNDA-HTTP" />
+          <zeebe:ioMapping>
+            <zeebe:input source="gitHubToken" target="authorization" />
+            <zeebe:input source="buildid" target="body.client_payload.buildid" />
+            <zeebe:input source="TYPE_TEST_MAGIKCRAFT" target="body.event_type" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="method" value="post" />
+            <zeebe:header key="url" value="https://api.github.com/repos/Magikcraft/minecraft/dispatches" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>SequenceFlow_1x8p27f</bpmn:incoming>
+        <bpmn:outgoing>SequenceFlow_1al2k0z</bpmn:outgoing>
+      </bpmn:serviceTask>
     </bpmn:subProcess>
     <bpmn:sequenceFlow id="SequenceFlow_1ecjju8" sourceRef="StartEvent_053vgsa" targetRef="SubProcess_0cxymwu" />
     <bpmn:sequenceFlow id="SequenceFlow_1op9sji" sourceRef="SubProcess_1cf5d61" targetRef="SubProcess_0cxymwu" />
@@ -290,7 +307,7 @@
       <zeebe:subscription correlationKey="buildid" />
     </bpmn:extensionElements>
   </bpmn:message>
-  <bpmn:message id="Message_0gl46jv" name="MAGIKCRAFT_TEST_CONTAINERS_BUILT">
+  <bpmn:message id="Message_0gl46jv" name="SCRIPTCRAFT_TEST_CONTAINERS_BUILT">
     <bpmn:extensionElements>
       <zeebe:subscription correlationKey="buildid" />
     </bpmn:extensionElements>
@@ -394,14 +411,16 @@
         <di:waypoint x="686" y="400" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="SubProcess_0cxymwu_di" bpmnElement="SubProcess_0cxymwu" isExpanded="true">
-        <dc:Bounds x="445" y="970" width="765" height="280" />
+        <dc:Bounds x="445" y="970" width="1115" height="290" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_1qvhn8i_di" bpmnElement="StartEvent_1qvhn8i">
         <dc:Bounds x="502" y="1092" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1ecjju8_di" bpmnElement="SequenceFlow_1ecjju8">
         <di:waypoint x="208" y="1110" />
-        <di:waypoint x="445" y="1110" />
+        <di:waypoint x="327" y="1110" />
+        <di:waypoint x="327" y="1115" />
+        <di:waypoint x="445" y="1115" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_151816f_di" bpmnElement="SequenceFlow_151816f">
         <di:waypoint x="793" y="460" />
@@ -410,31 +429,33 @@
       <bpmndi:BPMNEdge id="SequenceFlow_1op9sji_di" bpmnElement="SequenceFlow_1op9sji">
         <di:waypoint x="831" y="550" />
         <di:waypoint x="831" y="760" />
-        <di:waypoint x="858" y="760" />
-        <di:waypoint x="858" y="970" />
+        <di:waypoint x="1047" y="760" />
+        <di:waypoint x="1047" y="970" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Group_19g3fpb_di" bpmnElement="Group_19g3fpb">
-        <dc:Bounds x="288" y="760" width="972" height="590" />
+        <dc:Bounds x="288" y="760" width="1442" height="600" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="679" y="710" width="74" height="40" />
+          <dc:Bounds x="886" y="710" width="74" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BoundaryEvent_0q9szne_di" bpmnElement="IntermediateThrowEvent_14vx50h">
-        <dc:Bounds x="507" y="952" width="36" height="36" />
+        <dc:Bounds x="544" y="952" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="420" y="936" width="89" height="14" />
+          <dc:Bounds x="457" y="936" width="89" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0x6ymch_di" bpmnElement="SequenceFlow_0x6ymch">
-        <di:waypoint x="525" y="952" />
-        <di:waypoint x="525" y="860" />
+        <di:waypoint x="562" y="952" />
+        <di:waypoint x="562" y="860" />
         <di:waypoint x="593" y="860" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1mgmimo_di" bpmnElement="SequenceFlow_1mgmimo">
         <di:waypoint x="648" y="900" />
-        <di:waypoint x="648" y="970" />
+        <di:waypoint x="648" y="935" />
+        <di:waypoint x="741" y="935" />
+        <di:waypoint x="741" y="970" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="666" y="950" width="53" height="14" />
+          <dc:Bounds x="759" y="957" width="53" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_0e334vg_di" bpmnElement="Task_0u0iuf8">
@@ -478,9 +499,9 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_1jv82he_di" bpmnElement="EndEvent_1jv82he">
-        <dc:Bounds x="1122" y="1092" width="36" height="36" />
+        <dc:Bounds x="1432" y="1092" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1101" y="1135" width="78" height="14" />
+          <dc:Bounds x="1411" y="1135" width="78" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="TextAnnotation_0ezb4x4_di" bpmnElement="TextAnnotation_0ezb4x4">
@@ -540,8 +561,8 @@
         <di:waypoint x="430" y="1730" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1rix9i0_di" bpmnElement="SequenceFlow_1rix9i0">
-        <di:waypoint x="829" y="1250" />
-        <di:waypoint x="829" y="1520" />
+        <di:waypoint x="1005" y="1260" />
+        <di:waypoint x="1005" y="1520" />
         <di:waypoint x="703" y="1520" />
         <di:waypoint x="703" y="1590" />
       </bpmndi:BPMNEdge>
@@ -592,8 +613,8 @@
         <dc:Bounds x="1160" y="710" width="270" height="40" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_1l5w3rm_di" bpmnElement="Association_1l5w3rm">
-        <di:waypoint x="1000" y="970" />
-        <di:waypoint x="1270" y="750" />
+        <di:waypoint x="1113" y="970" />
+        <di:waypoint x="1280" y="750" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="TextAnnotation_1v17g32_di" bpmnElement="TextAnnotation_1v17g32">
         <dc:Bounds x="1132" y="1480" width="326.71221322537116" height="39.13630229419703" />
@@ -609,13 +630,20 @@
       <bpmndi:BPMNShape id="IntermediateCatchEvent_0q47th9_di" bpmnElement="IntermediateThrowEvent_15vaj2e">
         <dc:Bounds x="1022" y="1092" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="998" y="1135" width="85" height="40" />
+          <dc:Bounds x="999" y="1135" width="84" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1x8p27f_di" bpmnElement="SequenceFlow_1x8p27f">
         <di:waypoint x="1058" y="1110" />
-        <di:waypoint x="1122" y="1110" />
+        <di:waypoint x="1140" y="1110" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1al2k0z_di" bpmnElement="SequenceFlow_1al2k0z">
+        <di:waypoint x="1240" y="1110" />
+        <di:waypoint x="1432" y="1110" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_105rd1n_di" bpmnElement="Task_1mu6hnb">
+        <dc:Bounds x="1140" y="1070" width="100" height="80" />
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

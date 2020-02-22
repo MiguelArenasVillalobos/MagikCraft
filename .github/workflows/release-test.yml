@@ -53,10 +53,10 @@ jobs:
       - name: Publish Docker image to Registry
         uses: elgohr/Publish-Docker-Github-Action@2.12
         with:
-          name: magikcraft/magikcraft
+          name: magikcraft/scriptcraft
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          dockerfile: SMA/Dockerfile-release
+          dockerfile: SMA/Dockerfile-Scriptcraft-release
           buildargs: image_tag=${{matrix.minecraft}}-${{matrix.vm}}
           tags: "${{matrix.minecraft}}-${{matrix.vm}}-test"
   dockerNukkit:
@@ -79,10 +79,10 @@ jobs:
       - name: Publish Docker image to Registry
         uses: elgohr/Publish-Docker-Github-Action@2.12
         with:
-          name: magikcraft/magikcraft
+          name: magikcraft/scriptcraft
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          dockerfile: SMA/Dockerfile-Nukkit-release
+          dockerfile: SMA/Dockerfile-Nukkit-Scriptcraft-release
           buildargs: image_tag=${{matrix.minecraft}}-${{matrix.vm}}
           tags: "${{matrix.minecraft}}-${{matrix.vm}}-test"
   report_success:
@@ -94,6 +94,6 @@ jobs:
         with:
           clientConfig: ${{ secrets.ZEEBE_CLIENT_CONFIG }}
           operation: publishMessage
-          messageName: MAGIKCRAFT_TEST_CONTAINERS_BUILT
+          messageName: SCRIPTCRAFT_TEST_CONTAINERS_BUILT
           correlationKey: ${{ github.event.client_payload.buildid }}
           variables: '{"test_containers_published": "true"}'

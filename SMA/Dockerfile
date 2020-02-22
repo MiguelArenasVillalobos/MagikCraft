@@ -1,4 +1,4 @@
-# This is for CI in GitHub Actions
+# This is for CI in GitHub Actions - runs tests
 ARG image_tag
 FROM magikcraft/minecraft:${image_tag}
 

@@ -1,0 +1,11 @@
+ This is for Release to Docker Hub via CI in GitHub Actions
+ARG image_tag
+FROM magikcraft/scriptcraft:latest
+
+# Setup the working directory
+RUN mkdir /srv/github-actions-app
+WORKDIR /_server_
+
+RUN rm plugins/*
+
+COPY SMA/resources/plugins/* plugins/
