@@ -35,28 +35,28 @@ jobs:
           dockerfile: SMA/Dockerfile-Magikcraft
           buildargs: image_tag=${{matrix.minecraft}}-${{matrix.vm}}-test
           tags: "${{matrix.minecraft}}-${{matrix.vm}}-test"
-  dockerNukkit:
-    name: Publish Docker images
-    needs: package
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        minecraft: [nukkit-1.0, nukkit-2.0]
-        vm: [graalvm, openjdk8]
-    steps:
-      - name: Download Dockerfile for job 3
-        uses: actions/download-artifact@v1
-        with:
-          name: SMA
-      - name: Publish Docker image to Registry
-        uses: elgohr/Publish-Docker-Github-Action@2.12
-        with:
-          name: magikcraft/magikcraft
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          dockerfile: SMA/Dockerfile-Nukkit-Scriptcraft-release
-          buildargs: image_tag=${{matrix.minecraft}}-${{matrix.vm}}-test
-          tags: "${{matrix.minecraft}}-${{matrix.vm}}-test"
+  # dockerNukkit:
+  #   name: Publish Docker images
+  #   needs: package
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       minecraft: [nukkit-1.0, nukkit-2.0]
+  #       vm: [graalvm, openjdk8]
+  #   steps:
+  #     - name: Download Dockerfile for job 3
+  #       uses: actions/download-artifact@v1
+  #       with:
+  #         name: SMA
+  #     - name: Publish Docker image to Registry
+  #       uses: elgohr/Publish-Docker-Github-Action@2.12
+  #       with:
+  #         name: magikcraft/magikcraft
+  #         username: ${{ secrets.DOCKER_USERNAME }}
+  #         password: ${{ secrets.DOCKER_PASSWORD }}
+  #         dockerfile: SMA/Dockerfile-Nukkit-Scriptcraft-release
+  #         buildargs: image_tag=${{matrix.minecraft}}-${{matrix.vm}}-test
+  #         tags: "${{matrix.minecraft}}-${{matrix.vm}}-test"
   report_success:
     runs-on: ubuntu-latest
     needs: [docker, dockerNukkit]
