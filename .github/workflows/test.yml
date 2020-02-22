@@ -1,4 +1,4 @@
-name: Matrix Test API
+name: Matrix Test ScriptCraft API
 
 on: [repository_dispatch]
 

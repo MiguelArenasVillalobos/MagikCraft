@@ -1,4 +1,4 @@
-name: Create Test Containers
+name: Create ScriptCraft Test Containers
 
 on:
   - repository_dispatch
