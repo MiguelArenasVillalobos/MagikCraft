@@ -6,7 +6,7 @@ See license-scriptcraft.txt
 // DO NOT CONVERT TO TYPESCRIPT
 
 // THIS FILE MUST BE JAVASCRIPT
-
+// prettier-ignore
 (function(rootDir, modulePaths, hooks, evaluate) {
   var debug = function(message) {
     if (global.__requireDebug) {
@@ -405,4 +405,4 @@ See license-scriptcraft.txt
   return _requireClosure(new java.io.File(rootDir));
   // last line deliberately has no semicolon!
   /* eslint semi: off*/
-});
+})
