@@ -43,7 +43,7 @@ jobs:
     needs: test
     steps:
       - name: Tell Camunda Cloud What's up!
-        uses: jwulf/zeebe-action@0.2.0
+        uses: jwulf/zeebe-action@master
         with:
           clientConfig: ${{ secrets.ZEEBE_CLIENT_CONFIG }}
           operation: publishMessage

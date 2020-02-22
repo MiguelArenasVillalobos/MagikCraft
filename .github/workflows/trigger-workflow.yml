@@ -17,7 +17,7 @@ jobs:
         uses: gerred/actions/current-time@master
         id: current-time
       - name: Kick off workflow
-        uses: jwulf/zeebe-action@0.2.0
+        uses: jwulf/zeebe-action@master
         with:
           operation: publishMessage
           messageName: MAGIKCRAFT_API_PUSH
