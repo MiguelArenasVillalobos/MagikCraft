@@ -22,10 +22,6 @@ jobs:
         minecraft: [paper-1.14.4, paper-1.15.2]
         vm: [graalvm, openjdk8]
     steps:
-      - name: Download build for job 2
-        uses: actions/download-artifact@v1
-        with:
-          name: build
       - name: Download Dockerfile for job 2
         uses: actions/download-artifact@v1
         with:
@@ -48,10 +44,6 @@ jobs:
         minecraft: [nukkit-1.0, nukkit-2.0]
         vm: [graalvm, openjdk8]
     steps:
-      - name: Download build for job 3
-        uses: actions/download-artifact@v1
-        with:
-          name: build
       - name: Download Dockerfile for job 3
         uses: actions/download-artifact@v1
         with:
