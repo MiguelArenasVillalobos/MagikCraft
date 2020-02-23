@@ -59,7 +59,7 @@ jobs:
   #         tags: "${{matrix.minecraft}}-${{matrix.vm}}-test"
   report_success:
     runs-on: ubuntu-latest
-    needs: [docker, dockerNukkit]
+    needs: [docker]
     # needs: [docker, dockerNukkit]
     steps:
       - name: Tell Camunda Cloud What's up!
