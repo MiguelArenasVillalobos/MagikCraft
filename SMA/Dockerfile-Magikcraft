@@ -3,7 +3,6 @@ ARG image_tag
 FROM magikcraft/scriptcraft:${image_tag}
 
 # Setup the working directory
-RUN mkdir /srv/github-actions-app
 WORKDIR /_server_
 
 RUN rm plugins/*
