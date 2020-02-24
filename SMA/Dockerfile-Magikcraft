@@ -12,5 +12,5 @@ COPY SMA/resources/plugins/* plugins/
 RUN mv plugins/h2.jar .
 
 RUN  echo "#\!/bin/bash" > start.sh \
-    && echo "java -cp paperclip.jar:h2.jar io.papermc.paperclip.Paperclip" >> start.sh \
+    && echo "java -cp minecraft.jar:h2.jar io.papermc.paperclip.Paperclip" >> start.sh \
     && chmod +x start.sh
