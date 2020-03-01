@@ -8,6 +8,7 @@ WORKDIR /_server_
 RUN rm plugins/*
 
 COPY SMA/resources/plugins/* plugins/
+COPY SMA/resources/plugins/MotdManager-Reloaded/config.yml plugins/MotdManager-Reloaded/config.yml
 
 RUN mv plugins/h2.jar .
 
